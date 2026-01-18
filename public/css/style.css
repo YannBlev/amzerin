@@ -1,0 +1,163 @@
+/* =========================
+    GLOBAL
+========================= */
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #090c13;
+    color: #dfccbe;
+    margin: 0;
+}
+
+/* =========================
+    NAVIGATION
+========================= */
+
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    color: inherit;
+}
+
+.topnav a:first-child {
+    font-weight: bolder;
+}
+
+.topnav a::before {
+    content: "> ";
+    visibility: hidden;
+}
+
+.topnav a:not(:first-child):not(:last-child):hover {
+    font-weight: bolder;
+}
+
+.topnav a:not(:first-child):not(:last-child):hover::before {
+    visibility: visible;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) { display: none; }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive { position: relative; }
+
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/* =========================
+    CARDS
+========================= */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    border: 1px solid #dfccbe;
+    padding: 20px;
+    max-width: 300px;
+    background-color: #090c13;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-link::before {
+    content: "> ";
+    visibility: hidden;
+}
+
+.card-link:hover::before {
+    visibility: visible;
+}
+
+/*==================
+    MORPION
+===================*/
+
+.morpion {
+    text-align: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    font-size: 48px;
+    background-color: #090c13;
+    color: #dfccbe;
+    border: 1px solid #dfccbe;
+    cursor: pointer;
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#reset {
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+

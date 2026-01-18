@@ -1,0 +1,11 @@
+<h2>Liste des mini-jeux</h2>
+
+<div class="cards">
+    <% games.forEach(game => { %>
+        <div class="card">
+            <h3><%= game.name %></h3>
+            <p><%= game.description %></p>
+            <a href="/games/<%= game.slug %>" class="card-link">Lancer</a>
+        </div>
+    <% }) %>
+</div>

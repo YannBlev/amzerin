@@ -1,0 +1,15 @@
+<h2>Morpion</h2>
+<p>Deux joueurs s'affrontent : X vs O</p>
+
+<div class="morpion">
+    <div class="board" id="board">
+        <% for (let i = 0; i < 9; i++) { %>
+            <button class="cell" data-index="<%= i %>"></button>
+        <% } %>
+    </div>
+
+    <p id="status"></p>
+    <button id="reset">Recommencer</button>
+</div>
+
+<script src="/js/morpion.js"></script>

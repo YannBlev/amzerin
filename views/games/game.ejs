@@ -1,0 +1,14 @@
+<h2><%= game.name %></h2>
+<p><%= game.description %></p>
+
+<div id="game-container"></div>
+
+<a href="/games" class="card-link">Retour à la liste</a>
+
+<% if (game.slug === 'morpion') { %>
+    <script src="/js/morpion.js"></script>
+<% } %>
+
+<% if (game.slug === 'snake') { %>
+    <script src="/js/snake.js"></script>
+<% } %>
