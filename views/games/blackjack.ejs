@@ -1,0 +1,68 @@
+<section class="plateau">
+	<section class='plateauBanque'>
+		<div class='verso_bckg'>
+			<img onClick='nvCarte();' src='/img/verso.png' class='verso cardBJ' alt='carte de la banque' />
+		</div>
+		<div id='scoreBanque'></div>
+		<div id='cartes_banque' style='display: flex;position: relative;'></div>
+	</section>
+	<section class='plateauJoueurs'>
+		<!-- --------------------------PLAYER 1-------------------------- -->
+		<section>
+			<div class='mainJoueur' id="cartes_joueur_1"></div>
+			<a class='underBlink' id='valeur_cartes_joueur_1' onClick='activerJoueur(1);'>New player</a>
+			<div class="commandeJoueur">
+				<div id='cash_joueur_1'></div>
+				<div id='mise_joueur_1'></div>
+				<div class="hitAndDoubleDown">
+					<div id='hit_joueur_1'></div>
+					<div id='doubleDown_joueur_1'></div>
+				</div>
+				<div id='annonce_joueur_1'></div>
+			</div>
+		</section>
+		<!-- --------------------------PLAYER 2-------------------------- -->
+		<section>
+			<div class='mainJoueur' id="cartes_joueur_2"></div>
+			<a class='underBlink' id='valeur_cartes_joueur_2' onClick='activerJoueur(2);'>New player</a>
+			<div class="commandeJoueur">
+				<div id='cash_joueur_2'></div>
+				<div id='mise_joueur_2'></div>
+				<div class="hitAndDoubleDown">
+					<div id='hit_joueur_2'></div>
+					<div id='doubleDown_joueur_2'></div>
+				</div>
+				<div id='annonce_joueur_2'></div>
+			</div>
+		</section>
+		<!-- --------------------------PLAYER 3-------------------------- -->
+		<section>
+			<div class='mainJoueur' id="cartes_joueur_3"></div>
+			<a class='underBlink' id='valeur_cartes_joueur_3' onClick='activerJoueur(3);'>New player</a>
+			<div class="commandeJoueur">
+				<div id='cash_joueur_3'></div>
+				<div id='mise_joueur_3'></div>
+				<div class="hitAndDoubleDown">
+					<div id='hit_joueur_3'></div>
+					<div id='doubleDown_joueur_3'></div>
+				</div>
+				<div id='annonce_joueur_3'></div>
+			</div>
+		</section>
+		<!-- --------------------------PLAYER 4-------------------------- -->
+		<section>
+		<div class='mainJoueur' id="cartes_joueur_4"></div>
+			<a class='underBlink' id='valeur_cartes_joueur_4' onClick='activerJoueur(4);'>New player</a>
+			<div class="commandeJoueur">
+				<div id='cash_joueur_4'></div>
+				<div id='mise_joueur_4'></div>
+				<div class="hitAndDoubleDown">
+					<div id='hit_joueur_4'></div>
+					<div id='doubleDown_joueur_4'></div>
+				</div>
+				<div id='annonce_joueur_4'></div>
+			</div>
+		</section>
+	</section>
+</section>
+<script src="/js/blackjack.js"></script>

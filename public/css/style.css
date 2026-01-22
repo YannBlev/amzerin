@@ -1,6 +1,6 @@
-/* =========================
-    GLOBAL
-========================= */
+/************
+*   GLOBAL  *
+*************/
 
 body {
     font-family: 'Courier New', Courier, monospace;
@@ -9,9 +9,9 @@ body {
     margin: 0;
 }
 
-/* =========================
-    NAVIGATION
-========================= */
+/****************
+*   NAVIGATION  *
+*****************/
 
 .topnav {
     overflow: hidden;
@@ -72,9 +72,9 @@ body {
     }
 }
 
-/* =========================
-    CARDS
-========================= */
+/************
+*   CARDS   *
+*************/
 
 .cards {
     display: flex;
@@ -118,9 +118,9 @@ body {
     visibility: visible;
 }
 
-/*==================
-    MORPION
-===================*/
+/************
+*   MORPION *
+*************/
 
 .morpion {
     text-align: center;
@@ -161,3 +161,168 @@ body {
     cursor: pointer;
 }
 
+/************
+*   CONTACT *
+*************/
+
+/* * {box-sizing: border-box;} */
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    background-color: #090c13;
+    color: #dfccbe;
+    outline: none;
+    transition: 0.5s;
+}
+
+input[type=text]:focus, select:focus, textarea:focus {
+    border: 1px solid #ccc;
+}
+
+input[type=submit] {
+
+
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+input[type=submit]:hover {
+
+}
+
+.container {
+    padding: 20px;
+}
+
+::placeholder {
+    color: gray;
+    opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+    color: gray;
+}
+
+/****************
+*   BLACKJACK   *
+*****************/
+
+.verso_bckg {
+position:relative;
+width:104px;
+background-image: url(../img/verso.png);
+background-repeat: no-repeat;
+}
+
+.verso {
+	
+transition: transform .2s;
+}
+
+.verso:hover {
+	
+	transform: scale(1.1) translate(10px, 10px) rotate(0.01turn);
+	cursor: pointer;
+}
+
+.verso_2 {
+	
+transition: transform .2s;
+}
+
+.verso_2:hover {
+	filter: brightness(1);
+	box-shadow: 5px 5px 5px black;
+	transform: scale(1.05) translate(-2px, -2px);
+	cursor: pointer;
+}
+
+.recto {
+
+	transition: transform .2s;
+}
+
+.recto:hover {
+
+	transform:translate(-3px, -30px) rotate(-0.005turn);
+}
+
+
+.recto_2 {
+	transition: transform .2s;
+}
+
+.recto_2:hover {
+	
+	transform:translate(-3px, -30px) rotate(0.005turn);
+}
+
+.cardBJ {
+    background-color: white;
+    border : 5px solid white;
+    border-radius: 5px;
+}
+
+.plateauBanque {
+    display: flex;
+    justify-content: center;
+}
+
+.plateauJoueurs {
+    display:flex;
+    justify-content: center;
+}
+
+.mainJoueur {
+    display: flex;
+}
+
+.commandeJoueur {
+    width:150px;
+    border : 1px solid white;
+    margin: 5px;
+    padding:5px;
+}
+
+.hitAndDoubleDown {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.underBlink::after {
+    content: "_";
+    animation: blink 1s steps(1) infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.underBlink::before {
+    content: "> ";
+    visibility: hidden;
+}
+
+.underBlink:hover {
+    font-weight: bolder;
+    cursor : pointer;
+}
+.underBlink:hover::before {
+    visibility: visible;
+}
+
+.underBlink:hover::after {
+    visibility: hidden;
+}

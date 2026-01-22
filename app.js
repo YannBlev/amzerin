@@ -19,9 +19,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 3) Routes
 ----------------------- */
 const indexRoutes = require('./routes/index.routes');
+const aboutRoutes = require('./routes/about.routes');
+const contactRoutes = require('./routes/contact.routes');
 const gamesRoutes = require('./routes/games.routes');
 app.use('/', indexRoutes);
 app.use('/games', gamesRoutes);
+app.use('/about', aboutRoutes);
+app.use('/contact', contactRoutes);
 
 /* -----------------------
 4) 404 (page non trouvée)
