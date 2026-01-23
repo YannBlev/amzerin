@@ -122,50 +122,41 @@ body {
 *   MORPION *
 *************/
 
-.morpion {
+h2.morpion {
+    display: flex;
+    justify-content: center;
+}
+
+section.morpion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.morpion table {
+    border-collapse: collapse;  /* Appliqué à la table */
+}
+
+section.morpion td {
+    height: 15vh;
+    width: 15vh;
+    text-align: center;
+    cursor: pointer;
+}
+
+section.morpion table td img {
+    height: 100%;
+    width: 100%;
+}
+
+article.morpion {
     text-align: center;
 }
 
-.board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    justify-content: center;
-    margin: 20px auto;
-}
-
-.cell {
-    width: 100px;
-    height: 100px;
-    font-size: 48px;
-    background-color: #090c13;
-    color: #dfccbe;
-    border: 1px solid #dfccbe;
-    cursor: pointer;
-}
-
-.cell:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-#status {
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-#reset {
-    margin-top: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
 
 /************
 *   CONTACT *
 *************/
-
-/* * {box-sizing: border-box;} */
 
 input[type=text], select, textarea {
     width: 100%;
@@ -187,18 +178,9 @@ input[type=text]:focus, select:focus, textarea:focus {
 }
 
 input[type=submit] {
-
-
-
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-
-
-input[type=submit]:hover {
-
 }
 
 .container {
@@ -226,18 +208,15 @@ background-repeat: no-repeat;
 }
 
 .verso {
-	
 transition: transform .2s;
 }
 
 .verso:hover {
-	
 	transform: scale(1.1) translate(10px, 10px) rotate(0.01turn);
 	cursor: pointer;
 }
 
 .verso_2 {
-	
 transition: transform .2s;
 }
 
@@ -249,12 +228,10 @@ transition: transform .2s;
 }
 
 .recto {
-
 	transition: transform .2s;
 }
 
 .recto:hover {
-
 	transform:translate(-3px, -30px) rotate(-0.005turn);
 }
 
@@ -264,7 +241,6 @@ transition: transform .2s;
 }
 
 .recto_2:hover {
-	
 	transform:translate(-3px, -30px) rotate(0.005turn);
 }
 
@@ -300,15 +276,21 @@ transition: transform .2s;
     justify-content: space-evenly;
 }
 
-.underBlink::after {
+/* Le clignotement de "_", fausse bonne idée ! */
+/* .underBlink::after {
     content: "_";
     animation: blink 1s steps(1) infinite;
     margin-left: 4px;
 }
 
+
+.underBlink:hover::after {
+    visibility: hidden;
+}
+
 @keyframes blink {
     50% { opacity: 0; }
-}
+} */
 
 .underBlink::before {
     content: "> ";
@@ -321,8 +303,4 @@ transition: transform .2s;
 }
 .underBlink:hover::before {
     visibility: visible;
-}
-
-.underBlink:hover::after {
-    visibility: hidden;
 }

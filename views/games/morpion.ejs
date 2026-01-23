@@ -1,15 +1,26 @@
-<h2>Morpion</h2>
-<p>Deux joueurs s'affrontent : X vs O</p>
+<h2 class="morpion">Morpion</h2>
+<section class="morpion">
+    <table>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+        </tr>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+        </tr>
+        <tr>
+            <td><img></td>
+            <td><img></td>
+            <td><img></td>
+        </tr>
+    </table>
+</section>
 
-<div class="morpion">
-    <div class="board" id="board">
-        <% for (let i = 0; i < 9; i++) { %>
-            <button class="cell" data-index="<%= i %>"></button>
-        <% } %>
-    </div>
-
-    <p id="status"></p>
-    <button id="reset">Recommencer</button>
-</div>
+<article class="morpion">
+    <h3>Player <joueur>1</joueur>'s turn' !</h3>
+</article>
 
 <script src="/js/morpion.js"></script>

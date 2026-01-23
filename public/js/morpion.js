@@ -1,79 +1,125 @@
-const board = document.getElementById('board');
-const status = document.getElementById('status');
-const resetBtn = document.getElementById('reset');
+$(function() {
 
-let currentPlayer = 'X';
-let cells = Array(9).fill('');
-let gameOver = false;
+    let srcImgCross = "/img/croix.png";
+    let srcImgRound = "/img/rond.png";
 
-const winningCombos = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-];
+    let btnRelaod = $( "<button/>",
+        {
+            html: 'Replay',
+            id: 'btnReload'
+        }
+    );
 
-function updateStatus(message) {
-    status.textContent = message;
-}
 
-function checkWin() {
-    for (const combo of winningCombos) {
-        const [a, b, c] = combo;
-        if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-            return cells[a];
+    
+    let round = 0;
+    let trs = $('tr');
+    let baliseJoueur = $('joueur');
+    let imgs = $('img');
+    let players = [
+        ["1", srcImgCross, false, 'croix'],
+        ["2", srcImgRound, false, 'rond']
+    ];
+    
+    // players[ ][0]
+    //         ^  0 => number for the player one
+    //            1 => number for the player two
+
+    // players[0][ ]
+    //            ^  0 => number       of the player one
+    //               1 => src image   for the player one
+    //               2 => win or not  for the player one
+    //               3 => alt image   for the player one
+
+    $(imgs).on("click", play)
+
+    function play() {
+        if ($(this).attr('src') === undefined) {
+            setImg(this);
+            checkWin();
+            if (!players[round%2][2]) {
+                setRoundPlayer();
+                checkDraw();
+            }
+            console.log(players[round%2][2]);
         }
     }
-    return null;
-}
 
-function checkDraw() {
-    return cells.every(cell => cell !== '');
-}
-
-function handleClick(e) {
-    const idx = parseInt(e.target.dataset.index);
-
-    if (gameOver || cells[idx]) return;
-
-    cells[idx] = currentPlayer;
-    e.target.textContent = currentPlayer;
-
-    const winner = checkWin();
-    if (winner) {
-        updateStatus(`Le joueur ${winner} a gagné !`);
-        gameOver = true;
-        return;
+    function setImg(img){
+        $(img).attr('src',players[round%2][1]);
+        $(img).attr('alt',players[round%2][3]);
     }
 
-    if (checkDraw()) {
-        updateStatus("Match nul !");
-        gameOver = true;
-        return;
+    function setRoundPlayer() {
+        round++;
+        baliseJoueur.text(players[round%2][0]);
     }
 
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    updateStatus(`Tour du joueur ${currentPlayer}`);
-}
+    /* ****************************
+    * FUNCTIONS FOR VERIFICATIONS *
+    * *****************************/
 
-function resetGame() {
-    cells.fill('');
-    gameOver = false;
-    currentPlayer = 'X';
-    updateStatus(`Tour du joueur ${currentPlayer}`);
-    document.querySelectorAll('.cell').forEach(cell => {
-    cell.textContent = '';
-    });
-}
+    function checkDraw() {
+        if (round === 9 ) {
+            $('h3').text('Draw');
+            $(imgs).off("click");
+        }
+    }
 
-document.querySelectorAll('.cell').forEach(cell => {
-    cell.addEventListener('click', handleClick);
+    function checkWin() {
+        checkRow();
+        checkColumn();
+        checkDiagonals();
+        if (players[round%2][2]) {
+            $('h3').text('Player ' + players[round%2][0] + ' wins !');
+            $('h3').after(btnRelaod);
+            $(imgs).off("click");
+            $('#btnReload').on('click', function() {
+                location.reload();
+            });
+        }
+    }
+
+    function checkRow() {
+        $(trs).each(function() {
+            let srcValues = [];
+            
+            $(this).find('img').each(function() {
+                srcValues.push($(this).attr('src'));
+            });
+            if (srcValues.every(checkImg)) players[round%2][2] = true;
+        });
+    }
+
+    function checkColumn() {
+        for (let index = 0; index < 3; index++) {
+            let srcValues = [];
+
+            $(trs).each(function() {
+                srcValues.push($(this).find('td').eq(index).find('img').attr('src'));
+            });
+            if (srcValues.every(checkImg)) players[round%2][2] = true
+        }
+    }
+
+    function checkDiagonals() {
+        // Diagonal \
+        let diagonal1 = [];
+        $(trs).each(function(index) {
+            diagonal1.push($(this).find('td').eq(index).find('img').attr('src'));
+        });
+        if (diagonal1.every(checkImg)) players[round%2][2] = true;
+
+        // Diagonal /
+        let diagonal2 = [];
+        $(trs).each(function(index) {
+            diagonal2.push($(this).find('td').eq(2 - index).find('img').attr('src'));
+        });
+        if (diagonal2.every(checkImg)) players[round%2][2] = true;
+    }
+
+    function checkImg(img){
+        return img === players[round%2][1];
+    }
+
 });
-
-resetBtn.addEventListener('click', resetGame);
-
-updateStatus(`Tour du joueur ${currentPlayer}`);

@@ -19,7 +19,9 @@ function activerJoueur(j) {
 		
 		valeurCartesJoueur [j].innerHTML = "<div>&#8203;</div>";
 		cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
-		miseJoueur [j].innerHTML = "<div style='display: flex;'><button type='button' onclick='dimMise("+j+");'>-</button>" + montantMiseJoueur [j] + "<button type='button' onclick='augmMise("+j+");'>+</button></div>";
+		miseJoueur [j].innerHTML = "<div style='display: flex;'><button type='button' id='dimMise("+j+");'>-</button>" + montantMiseJoueur [j] + "<button type='button' onclick='augmMise("+j+");'>+</button></div>";
+		let dimMise
+
 		hitJoueur [j].innerHTML = "<div>&#8203;</div>";
 		doubleDownJoueur [j].innerHTML = "<div>&#8203;</div>";
 		annonceJoueur [j].innerHTML = "";
@@ -338,6 +340,8 @@ let gagne = new Array();
 let push = new Array ();
 let blackjackBanque = false;
 let gagneBanque = true;
+let dimMise = new Array ();
+
 
 let divCarteJoueurPart1 = "<div style='position:relative;width:25px;'><img class='recto_2 cardBJ' src='../img/";
 let divCarteJoueurPart2 = ".png'></div>";
