@@ -10,7 +10,6 @@ $(function() {
         }
     );
 
-
     
     let round = 0;
     let trs = $('tr');
@@ -63,6 +62,10 @@ $(function() {
         if (round === 9 ) {
             $('h3').text('Draw');
             $(imgs).off("click");
+            $('h3').after(btnRelaod);
+            $('#btnReload').on('click', function() {
+                location.reload();
+            });
         }
     }
 
@@ -72,8 +75,8 @@ $(function() {
         checkDiagonals();
         if (players[round%2][2]) {
             $('h3').text('Player ' + players[round%2][0] + ' wins !');
-            $('h3').after(btnRelaod);
             $(imgs).off("click");
+            $('h3').after(btnRelaod);
             $('#btnReload').on('click', function() {
                 location.reload();
             });
