@@ -1,7 +1,7 @@
 <section class="plateau">
 	<section class='plateauBanque'>
 		<div class='verso_bckg'>
-			<img onClick='nvCarte();' src='/img/verso.png' class='verso cardBJ' alt='carte de la banque' />
+			<img id="deckBanque" src='/img/versoOff.png' class='cardBJ' alt='carte de la banque' />
 		</div>
 		<div id='scoreBanque'></div>
 		<div id='cartes_banque' style='display: flex;position: relative;'></div>
@@ -12,7 +12,7 @@
 			<div class='mainJoueur' id="cartes_joueur_1"></div>
 			<a class='underBlink' id="nouveau_joueur_1" onClick='activerJoueur(1);'>New player</a>
 			<div id='valeur_cartes_joueur_1'></div>
-			<div class="joueur">
+			<div id='zone_joueur_1'>
 				<div id='cash_joueur_1'></div>
 				<div id='mise_joueur_1'></div>
 				<div class="hitAndDoubleDown">
@@ -27,7 +27,7 @@
 			<div class='mainJoueur' id="cartes_joueur_2"></div>
 			<div id='valeur_cartes_joueur_2'></div>
 			<a class='underBlink' id="nouveau_joueur_2" onClick='activerJoueur(2);'>New player</a>
-			<div class="joueur">
+			<div id='zone_joueur_2'>
 				<div id='cash_joueur_2'></div>
 				<div id='mise_joueur_2'></div>
 				<div class="hitAndDoubleDown">
@@ -42,7 +42,7 @@
 			<div class='mainJoueur' id="cartes_joueur_3"></div>
 			<div id='valeur_cartes_joueur_3'></div>
 			<a class='underBlink' id="nouveau_joueur_3" onClick='activerJoueur(3);'>New player</a>
-			<div class="joueur">
+			<div id='zone_joueur_3'>
 				<div id='cash_joueur_3'></div>
 				<div id='mise_joueur_3'></div>
 				<div class="hitAndDoubleDown">
@@ -57,7 +57,7 @@
 			<div class='mainJoueur' id="cartes_joueur_4"></div>
 			<div id='valeur_cartes_joueur_4'></div>
 			<a class='underBlink' id="nouveau_joueur_4" onClick='activerJoueur(4);'>New player</a>
-			<div class="joueur">
+			<div id='zone_joueur_4'>
 				<div id='cash_joueur_4'></div>
 				<div id='mise_joueur_4'></div>
 				<div class="hitAndDoubleDown">

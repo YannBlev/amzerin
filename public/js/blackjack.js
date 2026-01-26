@@ -16,7 +16,9 @@ function activerJoueur(j) {
 		nouveauxJoueurs[j-1].style.display = "none";
 		cash [j] = cashDprt;
 		montantMiseJoueur [j] = miseDepart;
-		
+		deckBanque.src = "/img/verso.png";
+		deckBanque.classList.add('verso');
+		zonesJoueurs[j-1].classList.add('joueur');
 		valeurCartesJoueur [j].innerHTML = "";
 		cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
 		miseJoueur [j].innerHTML = "<div style='display: flex;'><button type='button' onclick='dimMise("+j+");'>-</button>" + montantMiseJoueur [j] + "<button type='button' onclick='augmMise("+j+");'>+</button></div>";
@@ -68,9 +70,9 @@ function valCarte (nameCarte) {
 
 function nvCarte () {
 
-
-	
 	if (distribuer&&(joueur[1]||joueur[2]||joueur[3]||joueur[4])) {
+		deckBanque.classList.remove('verso');
+		deckBanque.src = "/img/versoOff.png";
 		premiere_carteRandomBanque = carteRandom();
 		valeur_premiereCarteBanque = valCarte (premiere_carteRandomBanque);
 		
@@ -88,7 +90,7 @@ function nvCarte () {
 			}
 
 		valeurCarteBanque = valeur_premiereCarteBanque + valeur_deuxiemeCarteBanque;
-		cartesBanque.innerHTML = "<img class='cardBJ' src='../img/"+premiere_carteRandomBanque+".png' alt='carte de la banque' /><div style='width: 10px;' ></div><img class='verso_2 cardBJ' onClick='reste();'src='../img/verso.png' alt='carte du joueur' />";
+		cartesBanque.innerHTML = "<img class='cardBJ' src='../img/"+premiere_carteRandomBanque+".png' alt='carte de la banque' /><div style='margin: 5px;' ></div><img class='verso_2 cardBJ' onClick='reste();'src='../img/verso.png' alt='carte du joueur' />";
 		scoreBanque.innerHTML = valeur_premiereCarteBanque;
 		if (valeurCarteBanque==21) {blackjackBanque=true;}
 
@@ -157,6 +159,7 @@ function nvCarte () {
 					annonceJoueur [j].innerHTML = "";
 					cartesBanque.innerHTML = "";
 					cartesJoueur [j].innerHTML = "";
+					zonesJoueurs[j-1].classList.remove('joueur');
 					nouveauxJoueurs[j-1].style.display = "block";
 					valeurCartesJoueur [j].innerHTML = "";
 					cashJoueur [j].innerHTML = "";
@@ -235,12 +238,12 @@ function reste() {
 			}
 	}
 	if (ramasser==false&&distribuer==false) {
-		cartesBanque.innerHTML = "<img class='cardBJ' src='../img/"+premiere_carteRandomBanque+".png' alt='carte de la banque' /><div style='width: 1Opx;' ></div><img class='cardBJ' src='../img/"+deuxieme_carteRandomBanque+".png' alt='carte de la banque' />";
+		cartesBanque.innerHTML = "<img class='cardBJ' src='../img/"+premiere_carteRandomBanque+".png' alt='carte de la banque' /><div style='margin: 5px;' ></div><img class='cardBJ' src='../img/"+deuxieme_carteRandomBanque+".png' alt='carte de la banque' />";
 		scoreBanque.innerHTML = valeurCarteBanque;
 		while (valeurCarteBanque < 17) {
 			carteRandBanque = carteRandom() ;
 			valeur_carteRandBanque = valCarte (carteRandBanque);
-			cartesBanque.innerHTML += "<div style='width: 1%;' ></div><img class='cardBJ' src='../img/" + carteRandBanque + ".png' alt='carte de la banque' />";
+			cartesBanque.innerHTML += "<div style='margin: 5px;' ></div><img class='cardBJ' src='../img/" + carteRandBanque + ".png' alt='carte de la banque' />";
 			valeurCarteBanque += valeur_carteRandBanque ;
 			scoreBanque.innerHTML = valeurCarteBanque;
 		}
@@ -308,6 +311,8 @@ function reste() {
 		}
 	}
 	ramasser = true;
+	deckBanque.src = "../img/verso.png";
+	deckBanque.classList.add('verso');
 }
 
 let deck = 1;
@@ -344,7 +349,7 @@ let gagneBanque = true;
 
 let divCarteJoueurPart1 = "<div style='position:relative;width:25px;'><img class='recto_2 cardBJ' src='../img/";
 let divCarteJoueurPart2 = ".png'></div>";
-let divCarteJoueurDoubleDown = "<div style='position:relative;width:25px;'><img class='recto_2 cardBJ' onClick='reste();'src='../img/verso.png' alt='carte du joueur' /></div>";
+let divCarteJoueurDoubleDown = "<div style='position:relative;width:25px;'><img class='recto_2 cardBJ' src='../img/versoOff.png' alt='carte du joueur' /></div>";
 
 let cashDprt = 1000;
 let miseDepart = 100;
@@ -352,6 +357,9 @@ cashDprt -= miseDepart;
 let palierMise = 100;
 
 let asBanque = 0;
+let deckBanque = document.getElementById('deckBanque');
+deckBanque.addEventListener("click", nvCarte);
+
 let scoreBanque = document.getElementById('scoreBanque');
 let premiere_carteRandomBanque;
 let valeur_premiereCarteBanque;
@@ -368,3 +376,4 @@ let deuxieme_carteRandomJoueur = [];
 let valeur_deuxiemeCarteJoueur = [];
 
 let nouveauxJoueurs = [document.getElementById('nouveau_joueur_1'), document.getElementById('nouveau_joueur_2'), document.getElementById('nouveau_joueur_3'), document.getElementById('nouveau_joueur_4')];
+let zonesJoueurs = [document.getElementById('zone_joueur_1'), document.getElementById('zone_joueur_2'), document.getElementById('zone_joueur_3'), document.getElementById('zone_joueur_4')];

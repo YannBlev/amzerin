@@ -202,7 +202,6 @@ input[type=submit] {
 
 .verso_bckg {
 position:relative;
-width:104px;
 background-image: url(../img/verso.png);
 background-repeat: no-repeat;
 }
@@ -269,7 +268,7 @@ transition: transform .2s;
 }
 
 .joueur {
-    width:150px;
+
     border : 1px solid white;
     margin: 5px;
     padding:5px;
