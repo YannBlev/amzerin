@@ -13,7 +13,7 @@ function activerJoueur(j) {
 		cartesJoueur [j] = document.getElementById('cartes_joueur_'+j);
 		hitJoueur [j] = document.getElementById('hit_joueur_'+j);
 		doubleDownJoueur [j] = document.getElementById('doubleDown_joueur_'+j);
-		
+		nouveauxJoueurs[j-1].style.display = "none";
 		cash [j] = cashDprt;
 		montantMiseJoueur [j] = miseDepart;
 		
@@ -157,7 +157,8 @@ function nvCarte () {
 					annonceJoueur [j].innerHTML = "";
 					cartesBanque.innerHTML = "";
 					cartesJoueur [j].innerHTML = "";
-					valeurCartesJoueur [j].innerHTML = "<a class='underBlink' id='valeur_cartes_joueur_" + j + "' onClick='activerJoueur(" + j + ");'>New player</a>";
+					nouveauxJoueurs[j-1].style.display = "block";
+					valeurCartesJoueur [j].innerHTML = "";
 					cashJoueur [j].innerHTML = "";
 					joueur [j] = false;
 				}
@@ -311,7 +312,7 @@ function reste() {
 
 let deck = 1;
 let nbCarte = deck * 52;
-let carteDeck = new Array();
+let carteDeck = [];
 let valeurCarte;
 let i;
 let carteHit;
@@ -320,24 +321,24 @@ let ramasser = false;
 let distribuer = true;
 
 let nbJoueur = 4;
-let joueur = new Array();
-let valeurCartesJoueur = new Array ();
-let cashJoueur = new Array();
-let miseJoueur = new Array();
-let annonceJoueur = new Array();
-let cartesJoueur = new Array();
-let asJoueur = new Array();
-let hitJoueur = new Array();
-let doubleDownJoueur = new Array();
-let montantMiseJoueur = new Array();
-let cash = new Array();
-let scoreJoueur = new Array();
-let continu = new Array();
-let blackjack = new Array();
-let doubledown = new Array();
-let hitDoubledown = new Array();
-let gagne = new Array();
-let push = new Array ();
+let joueur = [];
+let valeurCartesJoueur = [];
+let cashJoueur = [];
+let miseJoueur = [];
+let annonceJoueur = [];
+let cartesJoueur = [];
+let asJoueur = [];
+let hitJoueur = [];
+let doubleDownJoueur = [];
+let montantMiseJoueur = [];
+let cash = [];
+let scoreJoueur = [];
+let continu = [];
+let blackjack = [];
+let doubledown = [];
+let hitDoubledown = [];
+let gagne = [];
+let push = [];
 let blackjackBanque = false;
 let gagneBanque = true;
 
@@ -361,7 +362,9 @@ let valeurCarteBanque;
 let carteRandBanque;
 let valeur_carteRandBanque;
 
-let premiere_carteRandomJoueur = new Array();
-let valeur_premiereCarteJoueur = new Array();
-let deuxieme_carteRandomJoueur = new Array();
-let valeur_deuxiemeCarteJoueur = new Array();
+let premiere_carteRandomJoueur = [];
+let valeur_premiereCarteJoueur = [];
+let deuxieme_carteRandomJoueur = [];
+let valeur_deuxiemeCarteJoueur = [];
+
+let nouveauxJoueurs = [document.getElementById('newPlayer1'), document.getElementById('newPlayer2'), document.getElementById('newPlayer3'), document.getElementById('newPlayer4')];

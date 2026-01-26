@@ -253,18 +253,22 @@ transition: transform .2s;
 .plateauBanque {
     display: flex;
     justify-content: center;
+    padding-bottom: 2%;
+    padding-top: 5%;
 }
 
 .plateauJoueurs {
     display:flex;
     justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 5%;
 }
 
 .mainJoueur {
     display: flex;
 }
 
-.commandeJoueur {
+.joueur {
     width:150px;
     border : 1px solid white;
     margin: 5px;
