@@ -367,4 +367,4 @@ let valeur_premiereCarteJoueur = [];
 let deuxieme_carteRandomJoueur = [];
 let valeur_deuxiemeCarteJoueur = [];
 
-let nouveauxJoueurs = [document.getElementById('newPlayer1'), document.getElementById('newPlayer2'), document.getElementById('newPlayer3'), document.getElementById('newPlayer4')];
+let nouveauxJoueurs = [document.getElementById('nouveau_joueur_1'), document.getElementById('nouveau_joueur_2'), document.getElementById('nouveau_joueur_3'), document.getElementById('nouveau_joueur_4')];
