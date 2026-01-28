@@ -261,6 +261,7 @@ transition: transform .2s;
     justify-content: center;
     padding-top: 2%;
     padding-bottom: 5%;
+
 }
 
 .mainJoueur {
@@ -272,6 +273,8 @@ transition: transform .2s;
     border : 1px solid white;
     margin: 5px;
     padding:5px;
+    width:120px;
+    height: 60px;
 }
 
 .hitAndDoubleDown {
@@ -279,8 +282,7 @@ transition: transform .2s;
     justify-content: space-evenly;
 }
 
-/* Le clignotement de "_", fausse bonne idée ! */
-/* .underBlink::after {
+.underBlink::after {
     content: "_";
     animation: blink 1s steps(1) infinite;
     margin-left: 4px;
@@ -293,17 +295,17 @@ transition: transform .2s;
 
 @keyframes blink {
     50% { opacity: 0; }
-} */
+}
 
-.underBlink::before {
+.selectionner::before {
     content: "> ";
     visibility: hidden;
 }
 
-.underBlink:hover {
+.selectionner:hover {
     font-weight: bolder;
     cursor : pointer;
 }
-.underBlink:hover::before {
+.selectionner:hover::before {
     visibility: visible;
 }

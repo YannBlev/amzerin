@@ -6,6 +6,10 @@ function nouvellePartie() {
 function activerJoueur(j) {
 	if (joueur [j]!=true&&distribuer) {
 		continu [j] = true;
+		dealer.innerText = "Dealer : "
+		indexDealer = 0;
+		txtDealer = "Tell me when you've placed your bets, you fools, and I'll deal the cards.";
+		setTimeout(displayDealer, 500);
 		valeurCartesJoueur [j] = document.getElementById('valeur_cartes_joueur_'+j);
 		cashJoueur [j] = document.getElementById('cash_joueur_'+j);
 		miseJoueur [j] = document.getElementById('mise_joueur_'+j);
@@ -71,6 +75,10 @@ function valCarte (nameCarte) {
 function nvCarte () {
 
 	if (distribuer&&(joueur[1]||joueur[2]||joueur[3]||joueur[4])) {
+		dealer.innerText = "Dealer : "
+		indexDealer = 0;
+		txtDealer = "Have you finished playing so I can show you my hand ?";
+		setTimeout(displayDealer, 500);
 		deckBanque.classList.remove('verso');
 		deckBanque.src = "/img/versoOff.png";
 		premiere_carteRandomBanque = carteRandom();
@@ -139,6 +147,10 @@ function nvCarte () {
 	
 	if (ramasser) {
 		scoreBanque.innerHTML = "";
+		dealer.innerText = "Dealer : "
+		indexDealer = 0;
+		txtDealer = "It's time to place your bets. Would another player like to take a seat ?";
+		setTimeout(displayDealer, 500);
 		for (j=1;j<=nbJoueur;j++) {
 			if (joueur[j]) {
 				if (cash [j]>0) {
@@ -238,6 +250,9 @@ function reste() {
 			}
 	}
 	if (ramasser==false&&distribuer==false) {
+		dealer.innerText = "Dealer : "
+		indexDealer = 0;
+		txtDealer = "";
 		cartesBanque.innerHTML = "<img class='cardBJ' src='../img/"+premiere_carteRandomBanque+".png' alt='carte de la banque' /><div style='margin: 5px;' ></div><img class='cardBJ' src='../img/"+deuxieme_carteRandomBanque+".png' alt='carte de la banque' />";
 		scoreBanque.innerHTML = valeurCarteBanque;
 		while (valeurCarteBanque < 17) {
@@ -258,6 +273,7 @@ function reste() {
 						cash [j] += montantMiseJoueur [j];
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
 						annonceJoueur [j].innerHTML ="push";
+						txtDealer +=  "Player " + j + ": PUSH ! ";
 					}
 					else {
 						gagne[j]=false;
@@ -266,6 +282,7 @@ function reste() {
 						cash [j] += 2.5*montantMiseJoueur [j];
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
 						annonceJoueur [j].innerHTML = "<b>+"+ 2.5*montantMiseJoueur [j] +"</b>";
+						txtDealer +=  "Player " + j + ": Blackjack !  ";
 					}
 				}
 				else {
@@ -277,6 +294,7 @@ function reste() {
 					if ((scoreJoueur [j]>21)||((scoreJoueur [j]<valeurCarteBanque)&&(valeurCarteBanque<22))) {
 						gagne[j]=false;
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
+						txtDealer +=  "Player " + j + ": Thank you for the money ! ";
 					}
 					if ((scoreJoueur [j]>valeurCarteBanque)&&(scoreJoueur [j]<22)) {
 						gagne[j]=true;
@@ -284,7 +302,8 @@ function reste() {
 						blackjack [j]=false;
 						cash [j] += 2*montantMiseJoueur [j];
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
-						annonceJoueur [j].innerHTML = "+ " + montantMiseJoueur [j] + " $" ;
+						annonceJoueur [j].innerHTML = "+ " + 2*montantMiseJoueur [j] + "$" ;
+						txtDealer +=  "Player " + j + ": You get $" + 2*montantMiseJoueur [j];
 					}
 					if (gagne[j]&&gagneBanque==false) {
 						gagne[j]=true;
@@ -292,7 +311,8 @@ function reste() {
 						blackjack [j]=false;
 						cash [j] += 2*montantMiseJoueur [j];
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
-						annonceJoueur [j].innerHTML = "+ " + montantMiseJoueur [j] + " $";
+						annonceJoueur [j].innerHTML = "+ " + 2*montantMiseJoueur [j] + "$";
+						txtDealer +=  "Player " + j + ": You get $" + 2*montantMiseJoueur [j];
 					}
 					if ((scoreJoueur [j]==valeurCarteBanque)&&(scoreJoueur [j]<22)) {
 						gagne[j]=false;
@@ -301,6 +321,7 @@ function reste() {
 						cash [j] += montantMiseJoueur [j];
 						cashJoueur [j].innerHTML = "<div class='cash'>$ "+ cash [j] +"</div>";
 						annonceJoueur [j].innerHTML = "push";
+						txtDealer +=  "Player " + j + ": PUSH ! ";
 					}
 				}
 				
@@ -309,6 +330,9 @@ function reste() {
 		gagne [j] = true;
 		doubledown [j] = false;
 		}
+
+		// txtDealer = "Tell me when you've placed your bets, you fools, and I'll deal the cards.";
+		setTimeout(displayDealer, 500);
 	}
 	ramasser = true;
 	deckBanque.src = "../img/verso.png";
@@ -375,5 +399,21 @@ let valeur_premiereCarteJoueur = [];
 let deuxieme_carteRandomJoueur = [];
 let valeur_deuxiemeCarteJoueur = [];
 
+let btnRejouer = document.getElementById('btnRejouer');
+btnRejouer.addEventListener("click", nouvellePartie);
 let nouveauxJoueurs = [document.getElementById('nouveau_joueur_1'), document.getElementById('nouveau_joueur_2'), document.getElementById('nouveau_joueur_3'), document.getElementById('nouveau_joueur_4')];
 let zonesJoueurs = [document.getElementById('zone_joueur_1'), document.getElementById('zone_joueur_2'), document.getElementById('zone_joueur_3'), document.getElementById('zone_joueur_4')];
+
+let dealer = document.getElementById('dealer');
+let indexDealer = 0;
+let txtDealer = 'Would a player like to take a seat ?';
+var speedDealer = 80;
+setTimeout(displayDealer, 1000);
+
+function displayDealer() {
+  if (indexDealer < txtDealer.length) {
+    dealer.innerText += txtDealer.charAt(indexDealer);
+    indexDealer++;
+    setTimeout(displayDealer, speedDealer);
+  }
+}
